@@ -1,0 +1,28 @@
+/*************************
+Test 5 scope checking
+Should contain a semantic error
+***************************/
+
+var a:bool;
+
+begin
+    read a;
+    if (a) then
+    { 
+        fun test5(a:int,c:bool):int
+        {
+            var b:int;
+            begin
+                read b;
+                return a+b;
+            end
+        };
+        
+        begin 
+            print a;
+            print test5(true, 1);
+        end 
+    }
+    else
+        a := true;
+end

@@ -1,0 +1,105 @@
+comment "%" ;
+comment "/*" "*/" ;
+
+Prog1.Prog ::= Block ;
+
+Block1.Block ::= [Decl] Prog_body ;
+
+separator Decl ";" ;
+terminator Decl ";" ;
+
+Decl1.Decl ::= Var_decl ;
+Decl2.Decl ::= Fun_decl ;
+
+Var_decl1.Var_decl ::= "var" Ident Array_dims ":" Type ;
+
+Type1.Type ::= "int" ;
+Type2.Type ::= "real" ;
+Type3.Type ::= "bool" ;
+
+Array_dims1.Array_dims ::= "[" Expr "]" Array_dims ;
+Array_dims2.Array_dims ::= ;
+
+Fun_decl1.Fun_decl ::= "fun" Ident Param_list ":" Type "{" Fun_block "}" ;
+
+Fun_block1.Fun_block ::= [Decl] Fun_body ;
+
+separator Decl ";" ;
+
+Param_list1.Param_list ::= "(" [Param] ")" ;
+
+separator Param "," ;
+
+Param1.Param ::= Basic_decl ;
+
+Basic_decl1.Basic_decl ::= Ident Basic_array_dims ":" Type ;
+
+Basic_array_dims1.Basic_array_dims ::= "[" "]" Basic_array_dims ;
+Basic_array_dims2.Basic_array_dims ::= ;
+
+Prog_body1.Prog_body ::= "begin" [Stmt] "end" ;
+
+separator Stmt ";" ;
+terminator Stmt ";" ;
+
+Fun_body1.Fun_body ::= "begin" [Stmt] "return" Expr ";" "end" ;
+
+separator Stmt ";" ;
+terminator Stmt ";" ;
+
+Stmt1.Stmt ::= "if" Expr "then" Stmt "else" Stmt ;
+Stmt2.Stmt ::= "while" Expr "do" Stmt ;
+Stmt3.Stmt ::= "read" Identifier ;
+Stmt4.Stmt ::= Identifier ":=" Expr ;
+Stmt5.Stmt ::= "print" Expr ;
+Stmt6.Stmt ::= "{" Block "}" ;
+
+Identifier1.Identifier ::= Ident Array_dims ;
+
+Expr1.Expr ::= Expr "||" Bint_term ;
+Expr2.Expr ::= Bint_term ;
+
+Bint_term1.Bint_term ::= Bint_term "&&" Bint_factor ;
+Bint_term2.Bint_term ::= Bint_factor ;
+
+Bint_factor1.Bint_factor ::= "not" Bint_factor ;
+Bint_factor2.Bint_factor ::= Int_expr Compare_op Int_expr ;
+Bint_factor3.Bint_factor ::= Int_expr ;
+
+Compare_op1.Compare_op ::= "<" ;
+Compare_op2.Compare_op ::= ">" ;
+Compare_op3.Compare_op ::= "=<" ;
+Compare_op4.Compare_op ::= ">=" ;
+Compare_op5.Compare_op ::= "=" ;
+
+Int_expr1.Int_expr ::= Int_expr Add_op Int_term ;
+Int_expr2.Int_expr ::= Int_term ;
+
+Add_op1.Add_op ::= "+" ;
+Add_op2.Add_op ::= "-" ;
+
+Int_term1.Int_term ::= Int_term Mul_op Int_factor ;
+Int_term2.Int_term ::= Int_factor ;
+
+Mul_op1.Mul_op ::= "*" ;
+Mul_op2.Mul_op ::= "/" ;
+
+Int_factor1.Int_factor ::= "(" Expr ")" ;
+Int_factor2.Int_factor ::= "size" "(" Ident Basic_array_dims ")" ;
+Int_factor3.Int_factor ::= "float" "(" Expr ")" ;
+Int_factor4.Int_factor ::= "floor" "(" Expr ")" ;
+Int_factor5.Int_factor ::= "ceil" "(" Expr ")" ;
+Int_factor6.Int_factor ::= Ident Mod_list ;
+Int_factor7.Int_factor ::= Integer ;
+Int_factor8.Int_factor ::= Double ;
+Int_factor9.Int_factor ::= "true" ;
+Int_factor10.Int_factor ::= "false" ;
+Int_factor11.Int_factor ::= "-" Int_factor ;
+
+Mod_list1.Mod_list ::= "(" [Arg] ")" ;
+
+separator Arg "," ;
+
+Mod_list2.Mod_list ::= Array_dims ;
+
+Arg1.Arg ::= Expr ;

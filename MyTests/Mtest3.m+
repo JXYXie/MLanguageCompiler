@@ -1,0 +1,14 @@
+/*******************************
+M+ Test 3
+Testing the arrays
+*******************************/
+var x:int;
+var arr[2]:int;
+begin
+arr[0]:=1;
+arr[1]:=2;
+x:= arr[1];
+print arr[0];
+print arr[1];
+print x;
+end

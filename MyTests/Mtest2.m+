@@ -1,0 +1,11 @@
+/*******************************
+M+ Test 2
+Tests the multiplicatin of two ints
+*******************************/
+var x:int;
+fun f (x:int):int {
+begin
+return x * x;
+end }
+begin
+end

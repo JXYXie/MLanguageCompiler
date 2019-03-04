@@ -1,0 +1,32 @@
+/*************************************
+ test 1 that tests reals and floating points
+ as well as the calling of functions
+ *************************************/
+var x:int;
+var y:int;
+var z:real;
+var result:real;
+
+fun f1(a:real, b:real, c:real):real
+{
+    var o:real;
+    var p:real;
+    var q:real;
+    begin
+        q := 1.0 - z;
+        o := z*a;
+        p := q*b;
+        return o+p;
+    end
+};
+
+begin
+    read x;
+    read y;
+    read z;
+    if z>=0.0 && z=<1.0 then
+        result := f1(float(x),float(y),z)
+    else
+        result := 0.0;
+    print result;
+end

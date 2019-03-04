@@ -1,0 +1,23 @@
+/**********************
+Test 4 tests nested functions
+*************************/
+fun f(x:int,y:int):int
+{fun h(v:int):int
+   { var r:int;
+     begin if v=0 then r:= 0
+           else {fun g(v:int):int 
+                    {begin return f(z,w); end};
+                 begin 
+                    print v*g(v); 
+                    r:= z+w; 
+                 end};
+           return r;
+     end };
+ begin 
+   print w+y; print w+x;
+   return h(x*y);
+ end};
+var w:int;
+var z:int;
+begin
+end
